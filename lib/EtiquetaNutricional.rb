@@ -45,4 +45,50 @@ class Etiqueta
 
 
 
+    ## Método para imprimir la etiqueta
+
+    def to_s
+
+      a  = "Por porción (100g) \n"
+      a += "Valor energético \t #{self.calc_valor_energ_kJ} kJ / 8.400 kJ IR\n"
+      a += "\t\t #{self.calc_valor_energ_kcal} kcal / 2.000 kcal IR\n"
+      a += "Grasas \t #{@grasas} g.\n"
+      a += "Grasas saturadas \t #{@grasas_saturadas} g.\n"
+      a += "Hidratos de carbono \t #{@hidratos_carbono} g.\n"
+      a += "Azúcares \t #{@azucares} g.\n"
+      a += "Proteínas \t #{@proteinas} g.\n"
+      a += "Sal \t #{@sal} g.\n"
+      
+      ## SI HAY NUTRIENTES VOLUNTARIOS DECLARADOS
+      
+      if @grasas_mono
+          a += "Grasas monoinsaturadas\t #{@grasas_m} g.\n"
+      end
+      
+      if @grasas_poli
+          a += "Grasas poliinsaturadas\t #{@grasas_p} g.\n"
+      end
+      
+      if @polialcoholes
+          a += "Polialcoholes\t #{@polialcoholes} g.\n"
+      end
+    
+      if @almidon
+          a += "Almidón\t #{@almidon} g.\n"
+      end
+  
+      if @fibra
+          a +=  "Fibra alimentaria\t #{@fibra} g.\n"
+      end
+
+      if @vitaminas
+          a +=  "Vitaminas\t #{@vitaminas} g.\n"
+      end
+      
+      if @minerales
+          a +=  "Minerales\t #{@minerales} g.\n"
+      end
+  
+  end
+
 end

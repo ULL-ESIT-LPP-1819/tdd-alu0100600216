@@ -72,7 +72,7 @@ RSpec.describe EtiquetaNutricional do
       end
 
 
-## Aquí irán las de cálculo de los valores energéticos
+## Cálculo de los valores energéticos
 
     describe "# Calcula los valores energéticos"
       
@@ -85,6 +85,12 @@ RSpec.describe EtiquetaNutricional do
       end
 
 
+## Etiqueta impresa
 
+    describe "# Imprime la etiqueta bien formateada"
+      
+      it "Imprime etiqueta bien" do
+          expect(@test.to_s).to be_a(String)
+      end
 
 end
