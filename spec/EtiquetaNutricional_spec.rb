@@ -7,81 +7,82 @@ RSpec.describe EtiquetaNutricional do
 # Declaraciones de nutrientes y de nombre de producto
     
     before :each do
-      @test1 = Etiqueta.new("test1",1,2,3,4,5,6,6,5,4,3,2,1,0)
+      @test = Etiqueta.new("test",1,2,3,4,5,6,6,5,4,3,2,1,0)
     end
 
-    describe "Declaraciones de elementos: Nombre y componentes"
+    describe "# Declaraciones de elementos: Nombre y componentes"
       
       it "Se puede almacenar el nombre" do
-        expect(@test1.nombre).to eq("test1")
+        expect(@test.nombre).to eq("test")
       end
 
       it "Se puede guardar las grasas" do
-        expect(@test1.grasas).to eq(1)
+        expect(@test.grasas).to eq(1)
       end
       
       it "Se puede guardar las grasas saturadas" do
-      expect(@test1.grasas_saturadas).to eq(2)
+      expect(@test.grasas_saturadas).to eq(2)
       end
 
       it "Se puede guardar los hidratos de carbono" do
-        expect(@test1.hidratos_carbono).to eq(3)
+        expect(@test.hidratos_carbono).to eq(3)
       end
 
       it "Se puede guardar los azucares" do
-        expect(@test1.azucares).to eq(4)
+        expect(@test.azucares).to eq(4)
       end
 
       it "Se puede guardar las proteinas" do
-        expect(@test1.proteinas).to eq(5)
+        expect(@test.proteinas).to eq(5)
       end
 
       it "Se puede guardar la sal" do
-        expect(@test1.sal).to eq(6)
+        expect(@test.sal).to eq(6)
       end
 
 
 # Declaración de nutrientes opcionales y si se pueden almacenar
 
       it "Se puede guardar las grasas monoinsaturadas" do
-        expect(@test1.grasas_mono).to eq(6)
+        expect(@test.grasas_mono).to eq(6)
       end
 
       it "Se puede guardar las grasas poliinsaturadas" do
-        expect(@test1.grasas_poli).to eq(5)
+        expect(@test.grasas_poli).to eq(5)
       end
 
       it "Se puede guardar los polialcoholes" do
-        expect(@test1.polialcoholes).to eq(4)
+        expect(@test.polialcoholes).to eq(4)
       end
 
       it "Se puede guardar el almidón" do
-        expect(@test1.almidon).to eq(3)
+        expect(@test.almidon).to eq(3)
       end
 
       it "Se puede guardar la fibra" do
-        expect(@test1.fibra).to eq(2)
+        expect(@test.fibra).to eq(2)
       end
 
       it "Se puede guardar las vitaminas" do
-        expect(@test1.vitaminas).to eq(1)
+        expect(@test.vitaminas).to eq(1)
       end
 
       it "Se puede guardar los minerales" do
-        expect(@test1.minerales).to eq(0)
+        expect(@test.minerales).to eq(0)
       end
 
 
 ## Aquí irán las de cálculo de los valores energéticos
 
+    describe "# Calcula los valores energéticos"
+      
+      it "Calculado el valor en kJ" do
+        expect(@test.calc_valor_energ_kJ()).to eq(837)
+      end
 
-
-
-
-
-
-
-
+      it "Calculado el valor en kcal" do
+        expect(@test.calc_valor_energ_kcal()).to eq(201.6)
+      end
 
 
 
