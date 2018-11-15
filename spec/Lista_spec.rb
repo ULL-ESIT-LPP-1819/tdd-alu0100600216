@@ -1,6 +1,6 @@
 require './lib/Lista.rb'
 
-RSpec.describe EtiquetaNutricional do
+RSpec.describe Lista do
 
     before :each do
 
@@ -44,6 +44,13 @@ describe "# Probando operaciones en la lista" do
         expect(listatest.length).to eq(3)
     end
 
+    # Se imprime bien la lista
+    it "Devuelve el contenido de la lista" do
+        listatest = Lista.new()
+        listatest.insert(@etiqueta1)
+        listatest.insert(@etiqueta2)
+        expect(listatest.to_s).to be_a(String)
+      end
 end
 
 end

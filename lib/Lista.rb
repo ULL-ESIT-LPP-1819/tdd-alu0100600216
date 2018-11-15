@@ -58,4 +58,28 @@ class Lista
 
     end
 
+    # Método para imprimir la lista de etiquetas
+
+    def to_s
+      
+      nodo = Nodo.new(nil,nil,nil)
+      nodo = @head
+      
+      tmp = "{"
+      tmp += " #{nodo.value.to_s}"
+      nodo = nodo.next
+      
+      while !(nodo.nil?)
+        tmp += ", #{nodo.value.to_s}"
+        nodo = nodo.next
+      end
+      
+      tmp += " }"
+      tmp
+
+    end
+
+
+
+
 end
