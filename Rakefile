@@ -5,7 +5,13 @@ RSpec::Core::RakeTask.new(:spec)
 
 task :default => :spec
 
-desc "Realizar pruebas de la clase EtiquetaNutricional"
+desc "Realizar pruebas de la clase Etiqueta"
 task :spec do
     sh "rspec -I spec/EtiquetaNutricional_spec.rb"
+end
+
+
+desc "Realizar pruebas de la clase Lista"
+task :spec do
+    sh "rspec -I spec/Lista_spec.rb"
 end
