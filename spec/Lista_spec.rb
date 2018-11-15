@@ -53,4 +53,28 @@ describe "# Probando operaciones en la lista" do
       end
 end
 
+describe "# Clasificar la lista" do
+    
+    it "Clasifica correctamente" do
+        listatest = Lista.new()
+        listatest.insert(@etiqueta1)
+        listatest.insert(@etiqueta2)
+        listatest.insert(@etiqueta3)
+        listatest.insert(@etiqueta4)
+        listatest.insert(@etiqueta5)
+        listatest.insert(@etiqueta6)
+    
+            expect(clasificar_por_sal(listatest)).to eq("Los productos con una cantidad de sal menor o igual a la recomendada son [2, 3, 5, 6, 1] y los que tienen una sal excesiva son [10]")
+    end
+    end
+
+
+
+
+
+
+
+
 end
+
+

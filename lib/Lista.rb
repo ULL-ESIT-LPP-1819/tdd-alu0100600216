@@ -65,8 +65,8 @@ class Lista
       nodo = Nodo.new(nil,nil,nil)
       nodo = @head
       
-      tmp = "{"
-      tmp += " #{nodo.value.to_s}"
+      tmp = "["
+      tmp += "#{nodo.value.to_s}"
       nodo = nodo.next
       
       while !(nodo.nil?)
@@ -74,12 +74,31 @@ class Lista
         nodo = nodo.next
       end
       
-      tmp += " }"
+      tmp += "]"
       tmp
 
     end
 
-
-
-
 end
+
+
+def clasificar_por_sal (lista)
+    
+    sal_recomendada = Lista.new()
+    sal_excesiva = Lista.new()
+  
+    nodo = lista.extract
+    
+    while !(nodo.nil?)
+  
+      if nodo.value.sal > 6
+        sal_excesiva.insert(nodo.value.sal)
+      else
+        sal_recomendada.insert(nodo.value.sal)
+      end
+      nodo = lista.extract
+    end
+  
+    "Los productos con una cantidad de sal menor o igual a la recomendada son #{sal_recomendada.to_s} y los que tienen una sal excesiva son #{sal_excesiva.to_s}"
+  
+  end
