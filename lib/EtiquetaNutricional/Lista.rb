@@ -66,9 +66,12 @@ class Lista
       nodo = @head
       
       tmp = "["
-      tmp += "#{nodo.value.to_s}"
-      nodo = nodo.next
-      
+
+      if !(nodo.nil?)
+        tmp += "#{nodo.value.to_s}"
+        nodo = nodo.next
+      end
+
       while !(nodo.nil?)
         tmp += ", #{nodo.value.to_s}"
         nodo = nodo.next
@@ -101,4 +104,28 @@ def clasificar_por_sal (lista)
   
     "Los productos con una cantidad de sal menor o igual a la recomendada son #{sal_recomendada.to_s} y los que tienen una sal excesiva son #{sal_excesiva.to_s}"
   
+end
+
+def clasificar_por_imc (lista)
+    
+  imc_bajo = Lista.new()
+  imc_normal = Lista.new()
+  imc_excesivo = Lista.new()
+
+  nodo = lista.extract
+  
+  while !(nodo.nil?)
+
+    if nodo.value.datos_antropometricos.indice_masa_corporal >= 30
+      imc_excesivo.insert(nodo.value.datos_antropometricos.indice_masa_corporal)
+      elsif nodo.value.datos_antropometricos.indice_masa_corporal >=18.5
+      imc_normal.insert(nodo.value.datos_antropometricos.indice_masa_corporal)
+      else
+      imc_bajo.insert(nodo.value.datos_antropometricos.indice_masa_corporal)
+    end
+    nodo = lista.extract
   end
+
+  "Los IMC por debajo de lo normal son #{imc_bajo.to_s}, los IMC dentro de lo normal son #{imc_normal.to_s} y los que tienen un IMC excesivo son #{imc_excesivo.to_s}"
+
+end
