@@ -1,4 +1,4 @@
-require './lib/Lista.rb'
+require './lib/EtiquetaNutricional/Lista.rb'
 
 RSpec.describe Lista do
 
