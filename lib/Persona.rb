@@ -4,7 +4,7 @@ class Persona
 
     attr_accessor :nombre
 
-    def initilize(nombre)
+    def initialize(nombre)
         @nombre = nombre
     end
 
@@ -27,7 +27,7 @@ class Paciente < Persona
   
     def to_s
         a = "Nombre del paciente: #{@nombre}\n"
-        #a += @datos_antropometricos.to_s
+        a += @datos_antropometricos.to_s
     end
   
   end
