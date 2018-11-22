@@ -68,13 +68,6 @@ describe "# Clasificar la lista" do
     end
     end
 
-
-
-
-
-
-
-
 end
 
 
