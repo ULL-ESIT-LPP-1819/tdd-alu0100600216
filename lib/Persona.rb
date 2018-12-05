@@ -18,12 +18,21 @@ end
 
 class Paciente < Persona
 
+    include Comparable
+
     attr_accessor :datos_antropometricos
+
   
     def initialize(nombre, peso, talla, edad, sexo, circunferencia_cintura, circunferencia_cadera)
-      @nombre = nombre
-      @datos_antropometricos = DatosAntropometricos.new(peso, talla, edad, sexo, circunferencia_cintura, circunferencia_cadera)
+        @nombre = nombre
+        @datos_antropometricos = DatosAntropometricos.new(peso, talla, edad, sexo, circunferencia_cintura, circunferencia_cadera)
     end
+
+    def <=>(otro)
+        [self.nombre] <=> [otro.nombre]
+    end
+
+
   
     def to_s
         a = "Nombre del paciente: #{@nombre}\n"

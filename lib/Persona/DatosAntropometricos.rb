@@ -2,6 +2,8 @@ class DatosAntropometricos
 
 	attr_accessor :peso, :talla, :edad, :sexo, :circunferencia_cintura, :circunferencia_cadera
 
+	include Comparable
+	
 	def initialize(peso, talla, edad, sexo, circunferencia_cintura, circunferencia_cadera)
 		@peso = Float(peso)
 		@talla = Float(talla)
@@ -11,6 +13,9 @@ class DatosAntropometricos
 		@circunferencia_cadera = Float(circunferencia_cadera)
     end
 
+	def <=>(otro)
+        [self.peso, self.talla, self.edad, self.sexo, self.circunferencia_cintura, self.circunferencia_cadera] <=> [otro.peso, otro.talla, otro.edad, otro.sexo, otro.circunferencia_cintura, otro.circunferencia_cadera]
+    end
 
     #Cálculo datos antropométricos
 

@@ -56,7 +56,7 @@ RSpec.describe Persona do
     
     end
 
-    describe "Prueba de métodos cálculo datos antropométricos" do
+    describe "# Prueba de métodos cálculo datos antropométricos" do
 
         before :each do
             @datos1 = DatosAntropometricos.new(65, 170, 26, 0, 75, 95)
@@ -84,4 +84,37 @@ RSpec.describe Persona do
 
     end
 
+    describe "# Pruebas Comparable" do
+
+        # nombre, peso, talla, edad, sexo, circunferencia_cintura, circunferencia_cadera
+        before :each do    
+            @persona0 = Paciente.new("Alba", 65, 170, 26, 0, 75, 95)
+            @persona1 = Paciente.new("Alba", 65, 170, 26, 0, 75, 95)
+            @persona2 = Paciente.new("Bea", 65, 170, 26, 0, 75, 95)
+            @persona3 = Paciente.new("Carmen", 58, 163, 24, 0, 70, 83)
+            @persona4 = Paciente.new("Dana", 75, 180, 27, 0, 69, 88)
+        end
+
+        it "Operador ==" do
+            expect(@persona0 == @persona1).to eq(true)
+            expect(@persona1 == @persona2).to eq(false)
+        end
+
+
+        it "Operadores < y >" do
+            expect(@persona2.datos_antropometricos.talla < @persona4.datos_antropometricos.talla).to eq(true)
+            expect(@persona4.datos_antropometricos.talla > @persona3.datos_antropometricos.talla).to eq(true)
+        end
+
+        it "Operadores <= y >=" do
+            expect(@persona0.datos_antropometricos.talla <= @persona1.datos_antropometricos.talla).to eq(true)
+            expect(@persona1.datos_antropometricos.talla >= @persona2.datos_antropometricos.talla).to eq(true)
+            expect(@persona2.datos_antropometricos.talla <= @persona3.datos_antropometricos.talla).to eq(false)
+            expect(@persona3.datos_antropometricos.talla >= @persona4.datos_antropometricos.talla).to eq(false)
+        end
+
+        it "Operador between?" do
+            expect(@persona2.datos_antropometricos.talla.between?(@persona3.datos_antropometricos.talla,@persona4.datos_antropometricos.talla)).to eq(true)
+        end
+    end
 end
