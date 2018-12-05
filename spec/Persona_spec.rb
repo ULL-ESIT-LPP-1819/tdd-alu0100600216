@@ -2,7 +2,7 @@ require './lib/Persona.rb'
 
 RSpec.describe Persona do
 
-    describe "Probando jerarquía" do
+    describe "# Pruebas de jerarquía" do
 
         before :each do
             @persona1 = Persona.new("Dana") 
@@ -31,7 +31,7 @@ RSpec.describe Persona do
         end
     end
 
-    describe "Probando acceso y metodos" do
+    describe "# Pruebas de acceso y de métodos" do
 
         before :each do
             @persona1 = Persona.new("Dana") 
@@ -56,7 +56,7 @@ RSpec.describe Persona do
     
     end
 
-    describe "Probando métodos cálculo datos antropométricos" do
+    describe "Prueba de métodos cálculo datos antropométricos" do
 
         before :each do
             @datos1 = DatosAntropometricos.new(65, 170, 26, 0, 75, 95)
