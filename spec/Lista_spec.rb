@@ -98,6 +98,13 @@ describe "# Clasificar la lista de pacientes según el IMC" do
 
 end
 
+    describe "# Pruebas module Enumerable" do
+
+        it "test" do
+            expect(@etiqueta1.sal).to eq(2)
+        end
+    end
+
 end
 
 

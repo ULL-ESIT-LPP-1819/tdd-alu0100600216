@@ -7,6 +7,8 @@ class Lista
 
     attr_accessor :head, :tail
 
+    include Enumerable
+
     def initialize
       @head = nil
       @tail = nil

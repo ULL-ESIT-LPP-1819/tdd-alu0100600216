@@ -14,7 +14,7 @@ class DatosAntropometricos
     end
 
 	def <=>(otro)
-        [self.peso, self.talla, self.edad, self.sexo, self.circunferencia_cintura, self.circunferencia_cadera] <=> [otro.peso, otro.talla, otro.edad, otro.sexo, otro.circunferencia_cintura, otro.circunferencia_cadera]
+        [self.peso, self.talla, self.edad, self.sexo, self.circunferencia_cintura, self.circunferencia_cadera, self.indice_masa_corporal, self.porcentaje_grasa, self.relacion_circunferencia_cadera] <=> [otro.peso, otro.talla, otro.edad, otro.sexo, otro.circunferencia_cintura, otro.circunferencia_cadera, otro.indice_masa_corporal, otro.porcentaje_grasa, otro.relacion_circunferencia_cadera]
     end
 
     #Cálculo datos antropométricos

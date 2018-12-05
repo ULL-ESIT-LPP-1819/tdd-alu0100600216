@@ -116,5 +116,11 @@ RSpec.describe Persona do
         it "Operador between?" do
             expect(@persona2.datos_antropometricos.talla.between?(@persona3.datos_antropometricos.talla,@persona4.datos_antropometricos.talla)).to eq(true)
         end
+
+        it "Compara por IMC" do
+            expect(@persona2.datos_antropometricos.indice_masa_corporal > @persona3.datos_antropometricos.indice_masa_corporal).to eq(true)
+            expect(@persona0.datos_antropometricos.indice_masa_corporal == @persona1.datos_antropometricos.indice_masa_corporal).to eq(true)
+        end
+
     end
 end

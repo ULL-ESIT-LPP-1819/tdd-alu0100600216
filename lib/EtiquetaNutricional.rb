@@ -3,7 +3,6 @@ require "EtiquetaNutricional/version"
 class Etiqueta
 
     include Comparable
-
     attr_reader :nombre, :grasas, :grasas_saturadas, :hidratos_carbono, :azucares, :proteinas, :sal, :grasas_mono, :grasas_poli, :polialcoholes, :almidon, :fibra, :vitaminas, :minerales
 
     def initialize(nombre, grasas, grasas_saturadas, hidratos_carbono, azucares, proteinas, sal, grasas_mono, grasas_poli, polialcoholes, almidon, fibra, vitaminas, minerales)
@@ -28,7 +27,7 @@ class Etiqueta
     end
 
     def <=>(otro)
-        [self.nombre, self.grasas, self.grasas_saturadas, self.hidratos_carbono, self.azucares, self.proteinas, self.sal, self.grasas_mono, self.grasas_poli, self.polialcoholes, self.almidon, self.fibra, self.vitaminas, self.minerales] <=> [otro.nombre, otro.grasas, otro.grasas_saturadas, otro.hidratos_carbono, otro.azucares, otro.proteinas, otro.sal, otro.grasas_mono, otro.grasas_poli, otro.polialcoholes, otro.almidon, otro.fibra, otro.vitaminas, otro.minerales]
+        [self.nombre, self.grasas, self.grasas_saturadas, self.hidratos_carbono, self.azucares, self.proteinas, self.sal, self.grasas_mono, self.grasas_poli, self.polialcoholes, self.almidon, self.fibra, self.vitaminas, self.minerales, self.calc_valor_energ_kJ, self.calc_valor_energ_kcal] <=> [otro.nombre, otro.grasas, otro.grasas_saturadas, otro.hidratos_carbono, otro.azucares, otro.proteinas, otro.sal, otro.grasas_mono, otro.grasas_poli, otro.polialcoholes, otro.almidon, otro.fibra, otro.vitaminas, otro.minerales, otro.calc_valor_energ_kJ, otro.calc_valor_energ_kcal]
     end 
     # Cálculo del valor energético 
     

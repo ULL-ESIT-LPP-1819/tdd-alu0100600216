@@ -88,7 +88,7 @@ RSpec.describe EtiquetaNutricional do
         end
     end
 
-## Pruebas Comparable  
+############################ Pruebas Comparable  
 
     #nombre, grasas, grasas_saturadas, hidratos_carbono, azucares, proteinas, sal, grasas_mono, grasas_poli, polialcoholes, almidon, fibra, vitaminas, minerales
 
@@ -97,35 +97,35 @@ RSpec.describe EtiquetaNutricional do
         @test2 = Etiqueta.new("test",1,1,1,1,1,6,1,1,1,1,1,1,1)
         @test3 = Etiqueta.new("test",1,1,1,1,1,7,1,1,1,1,1,1,1)
         @test4 = Etiqueta.new("test",1,1,1,1,1,10,1,1,1,1,1,1,1)
-        #@test5 = Etiqueta.new("test",1,1,1,1,1,3,1,1,1,1,1,1)
     end
 
     describe "# Pruebas module Comparable" do
 
         # < <= == >= > between?(min,max)
 
-        it "Comprueba el operador ==" do
+        it "Operador ==" do
             expect(@test1 == @test2).to eq(true)
             expect(@test1 == @test3).to eq(false)
         end
 
-        it "Comprueba los operadores < y >" do
+        it "Operadores < y >" do
             expect(@test1.sal < @test4.sal).to eq(true)
             expect(@test4.sal > @test2.sal).to eq(true)
         end
 
-        it "Comprueba los operadores <= y >=" do
+        it "Operadores <= y >=" do
             expect(@test1.sal <= @test2.sal).to eq(true)
             expect(@test1.sal >= @test2.sal).to eq(true)
             expect(@test3.sal <= @test1.sal).to eq(false)
             expect(@test1.sal >= @test3.sal).to eq(false)
         end
 
-        it "Comprueba el operador between?" do
+        it "Operador between?" do
             expect(@test3.sal.between?(@test2.sal,@test4.sal)).to eq(true)
         end
 
-
+        it "Compara valor energético kJ" do
+            expect(@test4.calc_valor_energ_kJ > @test3.calc_valor_energ_kJ).to eq(true)
+        end
     end
-
 end
