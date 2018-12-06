@@ -1,24 +1,44 @@
-class DatosAntropometricos
+##
+# Author::    Andrés Concepción Afonso
+# Mail::      alu0100600216@ull.edu.es
+#
+# == Clase DatosAnt
+# Almacena los datos antropométricos de una persona (peso, talla,
+# edad, sexo y circunferencias de cintura y cadera)
+#
+# Además almacena los métodos para calcular el IMC, el % de grasa
+# corporal y el RCC; además de clasificar el IMC y RCC de acuerdo
+# a las tablas.
+#
 
-	attr_accessor :peso, :talla, :edad, :sexo, :circunferencia_cintura, :circunferencia_cadera
+class DatosAnt
 
-	def initialize(peso, talla, edad, sexo, circunferencia_cintura, circunferencia_cadera)
+	attr_accessor :peso, :talla, :edad, :sexo, :cir_cintura, :cir_cadera
+
+	include Comparable
+	
+	## Método initialize
+	def initialize(peso, talla, edad, sexo, cir_cintura, cir_cadera)
 		@peso = Float(peso)
 		@talla = Float(talla)
 		@edad = edad
 		@sexo = sexo
-		@circunferencia_cintura = Float(circunferencia_cintura)
-		@circunferencia_cadera = Float(circunferencia_cadera)
+		@cir_cintura = Float(cir_cintura)
+		@cir_cadera = Float(cir_cadera)
     end
 
+	## Método comparador (para poder usar las funciones de Comparable)
+	def <=>(otro)
+        [self.peso, self.talla, self.edad, self.sexo, self.cir_cintura, self.cir_cadera, self.indice_masa_corporal, self.porcentaje_grasa, self.rel_cir_cadera] <=> [otro.peso, otro.talla, otro.edad, otro.sexo, otro.cir_cintura, otro.cir_cadera, otro.indice_masa_corporal, otro.porcentaje_grasa, otro.rel_cir_cadera]
+    end
 
-    #Cálculo datos antropométricos
+    ## Cálculo IMC
 
     def indice_masa_corporal
 		(peso / (talla * talla) * 10000).round(1)
 	end
 
-
+	## IMC de acuerdo a la tabla
 	def imc_segun_tabla
 		imc = self.indice_masa_corporal
 
@@ -36,18 +56,20 @@ class DatosAntropometricos
 
 	end
 
+	## Cálculo porcentaje de grasa corporal
 	def porcentaje_grasa
 		(1.2 * self.indice_masa_corporal + 0.23 * edad - 10.8 * sexo - 5.4).round(1)
 	end
 
-	def relacion_circunferencia_cadera
-		(circunferencia_cintura / circunferencia_cadera).round(2)
+	## Cálculo Relación Circunferencia Cadera
+	def rel_cir_cadera
+		(cir_cintura / cir_cadera).round(2)
 	end
 
-
+	## RCC de acuerdo a la tabla
     def rcc_segun_tabla
         
-		rcc = self.relacion_circunferencia_cadera
+		rcc = self.rel_cir_cadera
 
         # Se discrimina según sexos
 		if sexo == 1
@@ -73,14 +95,14 @@ class DatosAntropometricos
     	end
     end
     
-
+	## Método to_s para imprimir los datos antropométricos
 	def to_s
 		a =  "Peso: #{@peso}\n"
 		a += "Altura: #{@talla}\n"
 		a += "Edad: #{@edad}\n"
 		a += "Sexo: #{@sexo}\n"
-		a += "Cincurferencia cintura: #{@circunferencia_cintura}\n"
-		a += "Cincurferencia cadera: #{@circunferencia_cadera}\n"
+		a += "Cincurferencia cintura: #{@cir_cintura}\n"
+		a += "Cincurferencia cadera: #{@cir_cadera}\n"
 		a += "Índice Masa Corporal (IMC): #{self.imc_segun_tabla}\n"
 		a += "% grasa: #{self.porcentaje_grasa}\n"
 		a += "Relación Circunferencia Cadera (RCC): #{self.rcc_segun_tabla}\n"

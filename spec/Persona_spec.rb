@@ -1,8 +1,8 @@
-require './lib/Persona.rb'
+require './lib/EtiquetaNutricional/Persona.rb'
 
 RSpec.describe Persona do
 
-    describe "Probando jerarquía" do
+    describe "# Pruebas de jerarquía" do
 
         before :each do
             @persona1 = Persona.new("Dana") 
@@ -31,7 +31,7 @@ RSpec.describe Persona do
         end
     end
 
-    describe "Probando acceso y metodos" do
+    describe "# Pruebas de acceso y de métodos" do
 
         before :each do
             @persona1 = Persona.new("Dana") 
@@ -43,7 +43,7 @@ RSpec.describe Persona do
         end
 
         it "Paciente devuelve nombre y datos" do
-          expect(@persona2).to respond_to(:nombre, :datos_antropometricos)
+          expect(@persona2).to respond_to(:nombre, :datos_ant)
         end
   
         it "Persona devuelve to_s" do
@@ -56,10 +56,10 @@ RSpec.describe Persona do
     
     end
 
-    describe "Probando métodos cálculo datos antropométricos" do
+    describe "# Prueba de métodos cálculo datos antropométricos" do
 
         before :each do
-            @datos1 = DatosAntropometricos.new(65, 170, 26, 0, 75, 95)
+            @datos1 = DatosAnt.new(65, 170, 26, 0, 75, 95)
         end
 
         it "Calcula IMC bien" do
@@ -75,7 +75,7 @@ RSpec.describe Persona do
         end
 
         it "Calcula RCC bien" do
-            expect(@datos1.relacion_circunferencia_cadera).to eq(0.79)
+            expect(@datos1.rel_cir_cadera).to eq(0.79)
         end
 
         it "Calcula RCC según tabla bien" do
@@ -84,4 +84,43 @@ RSpec.describe Persona do
 
     end
 
+    describe "# Pruebas Comparable" do
+
+        # nombre, peso, talla, edad, sexo, circunferencia_cintura, circunferencia_cadera
+        before :each do    
+            @persona0 = Paciente.new("Alba", 65, 170, 26, 0, 75, 95)
+            @persona1 = Paciente.new("Alba", 65, 170, 26, 0, 75, 95)
+            @persona2 = Paciente.new("Bea", 65, 170, 26, 0, 75, 95)
+            @persona3 = Paciente.new("Carmen", 58, 163, 24, 0, 70, 83)
+            @persona4 = Paciente.new("Dana", 75, 180, 27, 0, 69, 88)
+        end
+
+        it "Operador ==" do
+            expect(@persona0 == @persona1).to eq(true)
+            expect(@persona1 == @persona2).to eq(false)
+        end
+
+
+        it "Operadores < y >" do
+            expect(@persona2.datos_ant.talla < @persona4.datos_ant.talla).to eq(true)
+            expect(@persona4.datos_ant.talla > @persona3.datos_ant.talla).to eq(true)
+        end
+
+        it "Operadores <= y >=" do
+            expect(@persona0.datos_ant.talla <= @persona1.datos_ant.talla).to eq(true)
+            expect(@persona1.datos_ant.talla >= @persona2.datos_ant.talla).to eq(true)
+            expect(@persona2.datos_ant.talla <= @persona3.datos_ant.talla).to eq(false)
+            expect(@persona3.datos_ant.talla >= @persona4.datos_ant.talla).to eq(false)
+        end
+
+        it "Operador between?" do
+            expect(@persona2.datos_ant.talla.between?(@persona3.datos_ant.talla,@persona4.datos_ant.talla)).to eq(true)
+        end
+
+        it "Compara por IMC" do
+            expect(@persona2.datos_ant.indice_masa_corporal > @persona3.datos_ant.indice_masa_corporal).to eq(true)
+            expect(@persona0.datos_ant.indice_masa_corporal == @persona1.datos_ant.indice_masa_corporal).to eq(true)
+        end
+
+    end
 end
