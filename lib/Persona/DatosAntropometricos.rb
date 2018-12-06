@@ -1,20 +1,20 @@
 class DatosAntropometricos
 
-	attr_accessor :peso, :talla, :edad, :sexo, :circunferencia_cintura, :circunferencia_cadera
+	attr_accessor :peso, :talla, :edad, :sexo, :cir_cintura, :cir_cadera
 
 	include Comparable
 	
-	def initialize(peso, talla, edad, sexo, circunferencia_cintura, circunferencia_cadera)
+	def initialize(peso, talla, edad, sexo, cir_cintura, cir_cadera)
 		@peso = Float(peso)
 		@talla = Float(talla)
 		@edad = edad
 		@sexo = sexo
-		@circunferencia_cintura = Float(circunferencia_cintura)
-		@circunferencia_cadera = Float(circunferencia_cadera)
+		@cir_cintura = Float(cir_cintura)
+		@cir_cadera = Float(cir_cadera)
     end
 
 	def <=>(otro)
-        [self.peso, self.talla, self.edad, self.sexo, self.circunferencia_cintura, self.circunferencia_cadera, self.indice_masa_corporal, self.porcentaje_grasa, self.relacion_circunferencia_cadera] <=> [otro.peso, otro.talla, otro.edad, otro.sexo, otro.circunferencia_cintura, otro.circunferencia_cadera, otro.indice_masa_corporal, otro.porcentaje_grasa, otro.relacion_circunferencia_cadera]
+        [self.peso, self.talla, self.edad, self.sexo, self.cir_cintura, self.cir_cadera, self.indice_masa_corporal, self.porcentaje_grasa, self.rel_cir_cadera] <=> [otro.peso, otro.talla, otro.edad, otro.sexo, otro.cir_cintura, otro.cir_cadera, otro.indice_masa_corporal, otro.porcentaje_grasa, otro.rel_cir_cadera]
     end
 
     #Cálculo datos antropométricos
@@ -45,14 +45,14 @@ class DatosAntropometricos
 		(1.2 * self.indice_masa_corporal + 0.23 * edad - 10.8 * sexo - 5.4).round(1)
 	end
 
-	def relacion_circunferencia_cadera
-		(circunferencia_cintura / circunferencia_cadera).round(2)
+	def rel_cir_cadera
+		(cir_cintura / cir_cadera).round(2)
 	end
 
 
     def rcc_segun_tabla
         
-		rcc = self.relacion_circunferencia_cadera
+		rcc = self.rel_cir_cadera
 
         # Se discrimina según sexos
 		if sexo == 1
@@ -84,8 +84,8 @@ class DatosAntropometricos
 		a += "Altura: #{@talla}\n"
 		a += "Edad: #{@edad}\n"
 		a += "Sexo: #{@sexo}\n"
-		a += "Cincurferencia cintura: #{@circunferencia_cintura}\n"
-		a += "Cincurferencia cadera: #{@circunferencia_cadera}\n"
+		a += "Cincurferencia cintura: #{@cir_cintura}\n"
+		a += "Cincurferencia cadera: #{@cir_cadera}\n"
 		a += "Índice Masa Corporal (IMC): #{self.imc_segun_tabla}\n"
 		a += "% grasa: #{self.porcentaje_grasa}\n"
 		a += "Relación Circunferencia Cadera (RCC): #{self.rcc_segun_tabla}\n"

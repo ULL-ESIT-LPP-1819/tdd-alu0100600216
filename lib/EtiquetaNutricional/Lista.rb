@@ -5,24 +5,33 @@ Nodo = Struct.new(:value, :next, :prev)
 
 class Lista
 
+    include Enumerable
     attr_accessor :head, :tail
 
-    include Enumerable
-
     def initialize
-      @head = nil
-      @tail = nil
+        @head = nil
+        @tail = nil
+    end
+
+    def each
+        nodo = Nodo.new(nil, nil, nil)
+        nodo = @head
+        
+        while !(nodo.nil?)
+            yield nodo.value
+            nodo = nodo.next
+        end
     end
 
     # calcular tamaño de la lista
     def length
 
-      tam = 0
-      nodo = @head
+        tam = 0
+        nodo = @head
 
-      while !(nodo.nil?)
-        tam = tam + 1
-        nodo = nodo.next
+        while !(nodo.nil?)
+            tam = tam + 1
+            nodo = nodo.next
         end
 
         tam
@@ -30,33 +39,33 @@ class Lista
     end
 
     def empty
-       @head.nil?
+        @head.nil?
     end
 
-    #métodos para insertar y extraer
+    # métodos para insertar y extraer
 
     def insert(value)
 
-    nodo = Nodo.new(value, nil, @tail)
+        nodo = Nodo.new(value, nil, @tail)
 
-      @head = nodo if @head.nil?
-      @tail.next = nodo unless @tail.nil?
-      @tail = nodo
+        @head = nodo if @head.nil?
+        @tail.next = nodo unless @tail.nil?
+        @tail = nodo
 
     end
 
     def extract
 
-      return nil if self.empty
+        return nil if self.empty
       
-      temp = @head
-      @head = @head.next
+        temp = @head
+        @head = @head.next
 
-      @head.prev = nil unless @head.nil?
-      @tail = nil if @head.nil?
+        @head.prev = nil unless @head.nil?
+        @tail = nil if @head.nil?
 
-      temp.next = nil
-      temp
+        temp.next = nil
+        temp
 
     end
 
@@ -64,23 +73,23 @@ class Lista
 
     def to_s
       
-      nodo = Nodo.new(nil,nil,nil)
-      nodo = @head
+        nodo = Nodo.new(nil,nil,nil)
+        nodo = @head
       
-      tmp = "["
+        tmp = "["
 
-      if !(nodo.nil?)
-        tmp += "#{nodo.value.to_s}"
-        nodo = nodo.next
-      end
+        if !(nodo.nil?)
+            tmp += "#{nodo.value.to_s}"
+            nodo = nodo.next
+        end
 
-      while !(nodo.nil?)
-        tmp += ", #{nodo.value.to_s}"
-        nodo = nodo.next
-      end
+        while !(nodo.nil?)
+            tmp += ", #{nodo.value.to_s}"
+            nodo = nodo.next
+        end
       
-      tmp += "]"
-      tmp
+        tmp += "]"
+        tmp
 
     end
 
@@ -96,12 +105,12 @@ def clasificar_por_sal (lista)
     
     while !(nodo.nil?)
   
-      if nodo.value.sal > 6
-        sal_excesiva.insert(nodo.value.sal)
-      else
-        sal_recomendada.insert(nodo.value.sal)
-      end
-      nodo = lista.extract
+        if nodo.value.sal > 6
+            sal_excesiva.insert(nodo.value.sal)
+        else
+            sal_recomendada.insert(nodo.value.sal)
+        end
+        nodo = lista.extract
     end
   
     "Los productos con una cantidad de sal menor o igual a la recomendada son #{sal_recomendada.to_s} y los que tienen una sal excesiva son #{sal_excesiva.to_s}"
@@ -110,24 +119,24 @@ end
 
 def clasificar_por_imc (lista)
     
-  imc_bajo = Lista.new()
-  imc_normal = Lista.new()
-  imc_excesivo = Lista.new()
+    imc_bajo = Lista.new()
+    imc_normal = Lista.new()
+    imc_excesivo = Lista.new()
 
-  nodo = lista.extract
-  
-  while !(nodo.nil?)
-
-    if nodo.value.datos_antropometricos.indice_masa_corporal >= 30
-      imc_excesivo.insert(nodo.value.datos_antropometricos.indice_masa_corporal)
-      elsif nodo.value.datos_antropometricos.indice_masa_corporal >=18.5
-      imc_normal.insert(nodo.value.datos_antropometricos.indice_masa_corporal)
-      else
-      imc_bajo.insert(nodo.value.datos_antropometricos.indice_masa_corporal)
-    end
     nodo = lista.extract
-  end
+  
+    while !(nodo.nil?)
 
-  "Los IMC por debajo de lo normal son #{imc_bajo.to_s}, los IMC dentro de lo normal son #{imc_normal.to_s} y los que tienen un IMC excesivo son #{imc_excesivo.to_s}"
+        if nodo.value.datos_ant.indice_masa_corporal >= 30
+            imc_excesivo.insert(nodo.value.datos_ant.indice_masa_corporal)
+        elsif nodo.value.datos_ant.indice_masa_corporal >=18.5
+            imc_normal.insert(nodo.value.datos_ant.indice_masa_corporal)
+        else
+        imc_bajo.insert(nodo.value.datos_ant.indice_masa_corporal)
+        end
+        nodo = lista.extract
+    end
+
+    "Los IMC por debajo de lo normal son #{imc_bajo.to_s}, los IMC dentro de lo normal son #{imc_normal.to_s} y los que tienen un IMC excesivo son #{imc_excesivo.to_s}"
 
 end

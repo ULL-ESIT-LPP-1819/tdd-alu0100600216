@@ -46,7 +46,9 @@ class Etiqueta
 
     ## Falta ingesta referencia !!!
 
-
+    def enumeracion
+        calc_valor_energ_kcal
+    end
 
 
     ## Método para imprimir la etiqueta

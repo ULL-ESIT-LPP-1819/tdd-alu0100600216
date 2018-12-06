@@ -43,7 +43,7 @@ RSpec.describe Persona do
         end
 
         it "Paciente devuelve nombre y datos" do
-          expect(@persona2).to respond_to(:nombre, :datos_antropometricos)
+          expect(@persona2).to respond_to(:nombre, :datos_ant)
         end
   
         it "Persona devuelve to_s" do
@@ -75,7 +75,7 @@ RSpec.describe Persona do
         end
 
         it "Calcula RCC bien" do
-            expect(@datos1.relacion_circunferencia_cadera).to eq(0.79)
+            expect(@datos1.rel_cir_cadera).to eq(0.79)
         end
 
         it "Calcula RCC según tabla bien" do
@@ -102,24 +102,24 @@ RSpec.describe Persona do
 
 
         it "Operadores < y >" do
-            expect(@persona2.datos_antropometricos.talla < @persona4.datos_antropometricos.talla).to eq(true)
-            expect(@persona4.datos_antropometricos.talla > @persona3.datos_antropometricos.talla).to eq(true)
+            expect(@persona2.datos_ant.talla < @persona4.datos_ant.talla).to eq(true)
+            expect(@persona4.datos_ant.talla > @persona3.datos_ant.talla).to eq(true)
         end
 
         it "Operadores <= y >=" do
-            expect(@persona0.datos_antropometricos.talla <= @persona1.datos_antropometricos.talla).to eq(true)
-            expect(@persona1.datos_antropometricos.talla >= @persona2.datos_antropometricos.talla).to eq(true)
-            expect(@persona2.datos_antropometricos.talla <= @persona3.datos_antropometricos.talla).to eq(false)
-            expect(@persona3.datos_antropometricos.talla >= @persona4.datos_antropometricos.talla).to eq(false)
+            expect(@persona0.datos_ant.talla <= @persona1.datos_ant.talla).to eq(true)
+            expect(@persona1.datos_ant.talla >= @persona2.datos_ant.talla).to eq(true)
+            expect(@persona2.datos_ant.talla <= @persona3.datos_ant.talla).to eq(false)
+            expect(@persona3.datos_ant.talla >= @persona4.datos_ant.talla).to eq(false)
         end
 
         it "Operador between?" do
-            expect(@persona2.datos_antropometricos.talla.between?(@persona3.datos_antropometricos.talla,@persona4.datos_antropometricos.talla)).to eq(true)
+            expect(@persona2.datos_ant.talla.between?(@persona3.datos_ant.talla,@persona4.datos_ant.talla)).to eq(true)
         end
 
         it "Compara por IMC" do
-            expect(@persona2.datos_antropometricos.indice_masa_corporal > @persona3.datos_antropometricos.indice_masa_corporal).to eq(true)
-            expect(@persona0.datos_antropometricos.indice_masa_corporal == @persona1.datos_antropometricos.indice_masa_corporal).to eq(true)
+            expect(@persona2.datos_ant.indice_masa_corporal > @persona3.datos_ant.indice_masa_corporal).to eq(true)
+            expect(@persona0.datos_ant.indice_masa_corporal == @persona1.datos_ant.indice_masa_corporal).to eq(true)
         end
 
     end
