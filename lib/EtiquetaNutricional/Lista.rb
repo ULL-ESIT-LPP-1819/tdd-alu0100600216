@@ -1,18 +1,31 @@
-# Definición de lista genérica
-
-
+## Definición de nodo, necesario para implementar la lista
 Nodo = Struct.new(:value, :next, :prev)
+
+##
+# Author::    Andrés Concepción Afonso
+# Mail::      alu0100600216@ull.edu.es
+#
+# == Clase Lista
+# Esta clase simula una lista doblemente enlazada e implementa los
+# métodos necesarios para utilizarla
+#
+# Además dispone de métodos para clasificar los elementos de una
+# lista de acuerdo al contenido en sal (etiquetas nutricionales)
+# y al IMC (para pacientes)
+#
 
 class Lista
 
     include Enumerable
     attr_accessor :head, :tail
-
+    
+    ## Metodo initialize
     def initialize
         @head = nil
         @tail = nil
     end
 
+    ## Método each, necesario para enumerar los elementos de una lista (métodos de Enumerable)
     def each
         nodo = Nodo.new(nil, nil, nil)
         nodo = @head
@@ -23,7 +36,7 @@ class Lista
         end
     end
 
-    # calcular tamaño de la lista
+    ## Calcula el tamaño(longitud) de la lista
     def length
 
         tam = 0
@@ -38,12 +51,12 @@ class Lista
 
     end
 
+    ## Comprueba si la lista está vacía
     def empty
         @head.nil?
     end
 
-    # métodos para insertar y extraer
-
+    ## Insertar nodo
     def insert(value)
 
         nodo = Nodo.new(value, nil, @tail)
@@ -54,6 +67,7 @@ class Lista
 
     end
 
+    ## Extraer nodo
     def extract
 
         return nil if self.empty
@@ -69,8 +83,7 @@ class Lista
 
     end
 
-    # Método para imprimir la lista de etiquetas
-
+    ## Método to_s para imprimir la lista de elementos
     def to_s
       
         nodo = Nodo.new(nil,nil,nil)
@@ -95,7 +108,7 @@ class Lista
 
 end
 
-
+## Clasificar una lista de Etiquetas por el contenido en sal
 def clasificar_por_sal (lista)
     
     sal_recomendada = Lista.new()
@@ -117,6 +130,7 @@ def clasificar_por_sal (lista)
   
 end
 
+## Clasificar una lista de personas por el IMC
 def clasificar_por_imc (lista)
     
     imc_bajo = Lista.new()

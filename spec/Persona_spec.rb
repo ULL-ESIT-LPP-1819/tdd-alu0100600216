@@ -1,4 +1,4 @@
-require './lib/Persona.rb'
+require './lib/EtiquetaNutricional/Persona.rb'
 
 RSpec.describe Persona do
 
@@ -59,7 +59,7 @@ RSpec.describe Persona do
     describe "# Prueba de métodos cálculo datos antropométricos" do
 
         before :each do
-            @datos1 = DatosAntropometricos.new(65, 170, 26, 0, 75, 95)
+            @datos1 = DatosAnt.new(65, 170, 26, 0, 75, 95)
         end
 
         it "Calcula IMC bien" do

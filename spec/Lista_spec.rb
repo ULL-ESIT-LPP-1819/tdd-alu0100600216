@@ -1,5 +1,5 @@
 require './lib/EtiquetaNutricional/Lista.rb'
-require './lib/Persona.rb'
+require './lib/EtiquetaNutricional/Persona.rb'
 
 RSpec.describe Lista do
 
