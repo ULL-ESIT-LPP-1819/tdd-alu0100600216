@@ -38,7 +38,7 @@ class Paciente < Persona
     attr_accessor :datos_ant
     
     ## Método initialize
-    def initialize(nombre, peso, talla, edad, sexo, cir_cintura, cir_cadera)
+    def initialize(nombre, peso, talla, edad, sexo, cir_cintura, cir_cadera, nivel_act)
         @nombre = nombre
         @datos_ant = DatosAnt.new(peso, talla, edad, sexo, cir_cintura, cir_cadera)
     end
@@ -53,5 +53,43 @@ class Paciente < Persona
         a = "Nombre del paciente: #{@nombre}\n"
         a += @datos_ant.to_s
     end
+    
+    ## Peso teórico ideal
+    def peso_teorico_ideal
+        (@datos_ant.talla - 150) * 0.75 + 50
+    end
   
-  end
+    ## Gasto energético basal
+    def gasto_energetico_basal
+        if @datos_ant.sexo == 0
+            (10 * @datos_ant.peso) + (6.25 * @datos_ant.talla) - (5 * @datos_ant.edad) - 161
+        else
+            (10 * @datos_ant.peso) + (6.25 * @datos_ant.talla) - (5 * @datos_ant.edad) + 5
+        end
+    end
+    
+    ## Efecto termógeno de los alimentos
+    def efecto_termogeno
+        self.gasto_energetico_basal * 0.1
+    end
+    
+    ## Gasto por actividad física
+    def gasto_actividad_fisica
+        if @datos_ant.nivel_act == 0
+            factor_act = 0.0
+        elsif @datos_ant.nivel_act == 1
+            factor_act = 0.12
+        elsif @datos_ant.nivel_act == 2
+            factor_act = 0.27
+        else
+            factor_act = 0.54
+        end
+        self.gasto_energetico_basal * factor_act
+    end
+    
+    ## Gasto energético total
+    def gasto_energetico_total
+        self.gasto_energetico_basal + self.efecto_termogeno + self.gasto_actividad_fisica
+    end
+
+end

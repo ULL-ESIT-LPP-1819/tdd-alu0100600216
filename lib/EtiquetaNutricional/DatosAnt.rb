@@ -33,7 +33,6 @@ class DatosAnt
     end
 
     ## Cálculo IMC
-
     def indice_masa_corporal
 		(peso / (talla * talla) * 10000).round(1)
 	end
