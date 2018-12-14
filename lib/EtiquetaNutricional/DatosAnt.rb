@@ -13,18 +13,19 @@
 
 class DatosAnt
 
-	attr_accessor :peso, :talla, :edad, :sexo, :cir_cintura, :cir_cadera
+	attr_accessor :peso, :talla, :edad, :sexo, :cir_cintura, :cir_cadera, :nivel_act
 
 	include Comparable
 	
 	## Método initialize
-	def initialize(peso, talla, edad, sexo, cir_cintura, cir_cadera)
+	def initialize(peso, talla, edad, sexo, cir_cintura, cir_cadera, nivel_act)
 		@peso = Float(peso)
 		@talla = Float(talla)
 		@edad = edad
 		@sexo = sexo
 		@cir_cintura = Float(cir_cintura)
 		@cir_cadera = Float(cir_cadera)
+		@nivel_act = nivel_act
     end
 
 	## Método comparador (para poder usar las funciones de Comparable)

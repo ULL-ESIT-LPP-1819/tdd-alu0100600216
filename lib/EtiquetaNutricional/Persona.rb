@@ -40,7 +40,7 @@ class Paciente < Persona
     ## Método initialize
     def initialize(nombre, peso, talla, edad, sexo, cir_cintura, cir_cadera, nivel_act)
         @nombre = nombre
-        @datos_ant = DatosAnt.new(peso, talla, edad, sexo, cir_cintura, cir_cadera)
+        @datos_ant = DatosAnt.new(peso, talla, edad, sexo, cir_cintura, cir_cadera, nivel_act)
     end
 
     ## Método comparador (necesario para poder usar las funciones de Comparable)

@@ -3,7 +3,7 @@ require './lib/EtiquetaNutricional/Persona.rb'
 
 RSpec.describe Lista do
 
-############### Lista de etiquetas
+############ Lista de etiquetas
 
     before :each do
 
@@ -71,7 +71,6 @@ RSpec.describe Lista do
         end
     end
 
-
     describe "# Pruebas Enumerable etiquetas" do
         
         before :each do
@@ -121,19 +120,17 @@ RSpec.describe Lista do
     end
 
 
-
-
 ############### Lista de pacientes
 
     describe "# Clasificar la lista de pacientes según el IMC" do
 
         before :each do
-            @paciente1 = Paciente.new("Adrián", 45, 170, 1,2,3,4)
-            @paciente2 = Paciente.new("Berto", 130, 165, 1,2,3,4)
-            @paciente3 = Paciente.new("Carmen", 45, 154, 1,2,3,4)
-            @paciente4 = Paciente.new("Delia", 87, 163, 1,2,3,4)
-            @paciente5 = Paciente.new("Enrique", 110, 199, 1,2,3,4)
-            @paciente6 = Paciente.new("Francisca", 123, 176, 1,2,3,4)
+            @paciente1 = Paciente.new("Adrián", 45, 170, 1,2,3,4,0)
+            @paciente2 = Paciente.new("Berto", 130, 165, 1,2,3,4,0)
+            @paciente3 = Paciente.new("Carmen", 45, 154, 1,2,3,4,0)
+            @paciente4 = Paciente.new("Delia", 87, 163, 1,2,3,4,0)
+            @paciente5 = Paciente.new("Enrique", 110, 199, 1,2,3,4,0)
+            @paciente6 = Paciente.new("Francisca", 123, 176, 1,2,3,4,0)
         end
 
         it "Clasifica la lista correctamente" do
@@ -154,12 +151,12 @@ RSpec.describe Lista do
     describe "# Pruebas Enumerable Pacientes" do
 
         before :each do
-            @paciente1 = Paciente.new("Adrián", 43, 170, 1,2,3,4)
-            @paciente2 = Paciente.new("Berto", 130, 165, 1,2,3,4)
-            @paciente3 = Paciente.new("Carmen", 45, 154, 1,2,3,4)
-            @paciente4 = Paciente.new("Delia", 87, 163, 1,2,3,4)
-            @paciente5 = Paciente.new("Enrique", 110, 199, 1,2,3,4)
-            @paciente6 = Paciente.new("Francisca", 123, 176, 1,2,3,4)
+            @paciente1 = Paciente.new("Adrián", 43, 170, 1,2,3,4,0)
+            @paciente2 = Paciente.new("Berto", 130, 165, 1,2,3,4,0)
+            @paciente3 = Paciente.new("Carmen", 45, 154, 1,2,3,4,0)
+            @paciente4 = Paciente.new("Delia", 87, 163, 1,2,3,4,0)
+            @paciente5 = Paciente.new("Enrique", 110, 199, 1,2,3,4,0)
+            @paciente6 = Paciente.new("Francisca", 123, 176, 1,2,3,4,0)
    
             @listaenum2 = Lista.new
             @listaenum2.insert(@paciente1)

@@ -19,3 +19,8 @@ desc "Realizar pruebas de la clase EtiquetaNutricional"
 task :etiqueta do
     sh "rspec spec/EtiquetaNutricional_spec.rb"
 end
+
+desc "Realizar pruebas del menú dietético"
+task :etiqueta do
+    sh "rspec spec/menudiet_spec.rb"
+end

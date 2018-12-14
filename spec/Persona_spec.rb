@@ -6,7 +6,7 @@ RSpec.describe Persona do
 
         before :each do
             @persona1 = Persona.new("Dana") 
-            @persona2 = Paciente.new("Alba", 65, 170, 26, 0, 75, 95)
+            @persona2 = Paciente.new("Alba", 65, 170, 26, 0, 75, 95, 0)
         end
 
         it "P1 es una persona" do
@@ -35,7 +35,7 @@ RSpec.describe Persona do
 
         before :each do
             @persona1 = Persona.new("Dana") 
-            @persona2 = Paciente.new("Alba", 65, 170, 26, 0, 75, 95)
+            @persona2 = Paciente.new("Alba", 65, 170, 26, 0, 75, 95, 0)
         end
 
         it "Persona devuelve nombre" do
@@ -59,7 +59,7 @@ RSpec.describe Persona do
     describe "# Prueba de métodos cálculo datos antropométricos" do
 
         before :each do
-            @datos1 = DatosAnt.new(65, 170, 26, 0, 75, 95)
+            @datos1 = DatosAnt.new(65, 170, 26, 0, 75, 95, 0)
         end
 
         it "Calcula IMC bien" do
@@ -88,11 +88,11 @@ RSpec.describe Persona do
 
         # nombre, peso, talla, edad, sexo, circunferencia_cintura, circunferencia_cadera
         before :each do    
-            @persona0 = Paciente.new("Alba", 65, 170, 26, 0, 75, 95)
-            @persona1 = Paciente.new("Alba", 65, 170, 26, 0, 75, 95)
-            @persona2 = Paciente.new("Bea", 65, 170, 26, 0, 75, 95)
-            @persona3 = Paciente.new("Carmen", 58, 163, 24, 0, 70, 83)
-            @persona4 = Paciente.new("Dana", 75, 180, 27, 0, 69, 88)
+            @persona0 = Paciente.new("Alba", 65, 170, 26, 0, 75, 95, 0)
+            @persona1 = Paciente.new("Alba", 65, 170, 26, 0, 75, 95, 0)
+            @persona2 = Paciente.new("Bea", 65, 170, 26, 0, 75, 95, 0)
+            @persona3 = Paciente.new("Carmen", 58, 163, 24, 0, 70, 83, 0)
+            @persona4 = Paciente.new("Dana", 75, 180, 27, 0, 69, 88, 0)
         end
 
         it "Operador ==" do
@@ -123,4 +123,5 @@ RSpec.describe Persona do
         end
 
     end
+
 end
