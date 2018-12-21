@@ -1,8 +1,9 @@
 require './lib/EtiquetaNutricional'
 require './lib/EtiquetaNutricional/Lista.rb'
 require './lib/EtiquetaNutricional/Persona.rb'
+require './lib/EtiquetaNutricional/Array.rb'
 
-
+require 'benchmark'
 
 
 RSpec.describe EtiquetaNutricional do
@@ -11,28 +12,28 @@ RSpec.describe EtiquetaNutricional do
 
         before :each do
 
-            @paciente1 = Paciente.new("Alba", 65, 170, 26, 0, 75, 95, 0)
-            @paciente2 = Paciente.new("Bea", 65, 170, 26, 0, 75, 95, 1)
-            @paciente3 = Paciente.new("Carmen", 58, 163, 24, 0, 70, 83, 1)
+            @paciente1 = Paciente.new("Alba", 65, 170, 25, 0, 75, 95, 0)
+            @paciente2 = Paciente.new("Bea", 66, 171, 21, 0, 75, 95, 1)
+            @paciente3 = Paciente.new("Carmen", 50, 160, 24, 0, 70, 85, 1)
             @paciente4 = Paciente.new("Dana", 75, 180, 27, 0, 69, 88, 2)
             @paciente5 = Paciente.new("Enrique", 80, 195, 29, 1, 70, 75, 3)
-            @paciente6 = Paciente.new("Felix", 66, 178, 27, 0, 75, 95, 0)
+            @paciente6 = Paciente.new("Felix", 66, 178, 28, 0, 75, 95, 0)
             @paciente7 = Paciente.new("Gabriel", 61, 164, 26, 0, 74, 95, 1)
-            @paciente8 = Paciente.new("Hipolito", 58, 160, 24, 0, 76, 83, 1)
+            @paciente8 = Paciente.new("Hipolito", 58, 162, 22, 0, 76, 83, 1)
             @paciente9 = Paciente.new("Ignacio", 78, 188, 27, 0, 67, 88, 2)
             @paciente10 = Paciente.new("Juan", 89, 201, 29, 1, 72, 75, 3)
 
-            @pacientes_listaenl = Lista.new
-            @pacientes_listaenl.insert(@paciente1)
-            @pacientes_listaenl.insert(@paciente2)
-            @pacientes_listaenl.insert(@paciente3)
-            @pacientes_listaenl.insert(@paciente4)
-            @pacientes_listaenl.insert(@paciente5)
-            @pacientes_listaenl.insert(@paciente6)
-            @pacientes_listaenl.insert(@paciente7)
-            @pacientes_listaenl.insert(@paciente8)
-            @pacientes_listaenl.insert(@paciente9)
-            @pacientes_listaenl.insert(@paciente10)
+            @pacientes_lista = Lista.new
+            @pacientes_lista.insert(@paciente1)
+            @pacientes_lista.insert(@paciente2)
+            @pacientes_lista.insert(@paciente3)
+            @pacientes_lista.insert(@paciente4)
+            @pacientes_lista.insert(@paciente5)
+            @pacientes_lista.insert(@paciente6)
+            @pacientes_lista.insert(@paciente7)
+            @pacientes_lista.insert(@paciente8)
+            @pacientes_lista.insert(@paciente9)
+            @pacientes_lista.insert(@paciente10)
 
    
             @etiqueta1 = Etiqueta.new("a", 170,0,0,0,0,0,0,0,0,0,0,0,0)
@@ -97,6 +98,8 @@ RSpec.describe EtiquetaNutricional do
             @menu10.insert(@etiqueta3)
 
             @menu_array = [@menu1,@menu2,@menu3,@menu4,@menu5,@menu6,@menu7,@menu8,@menu9,@menu10]
+            @menu_array = @menu_array.map{|i| i.collect{|j| j.calc_valor_energ_kcal}}
+
         end
         
         it "Menus almacenados en array" do
@@ -105,9 +108,39 @@ RSpec.describe EtiquetaNutricional do
         end
         
         it "Pacientes almacenados en lista" do
-            expect(@pacientes_listaenl).to be_an_instance_of(Lista)
-            expect(@pacientes_listaenl.length).to eq(10)
+            expect(@pacientes_lista).to be_an_instance_of(Lista)
+            expect(@pacientes_lista.length).to eq(10)
         end
 
+        it "Ordenados pacientes y menús usando bucles for" do
+            expect(@pacientes_lista.ordenar_for).to eq([1487.18, 1569.15, 1612.23, 1618.65, 1639.68, 1784.555, 2163.23, 2272.83, 3081.15, 3290.25])
+            expect(@menu_array.ordenar_for).to eq([1530.0, 1665.0, 1935.0, 2160.0, 2169.0, 2187.0, 2187.0, 2232.0, 2997.0, 3105.0])
+        end
+
+        it "Ordenados pacientes y menús usando each" do
+            expect(@pacientes_lista.ordenar_each).to eq([1487.18, 1569.15, 1612.23, 1618.65, 1639.68, 1784.555, 2163.23, 2272.83, 3081.15, 3290.25])
+            expect(@menu_array.ordenar_each).to eq([1530.0, 1665.0, 1935.0, 2160.0, 2169.0, 2187.0, 2187.0, 2232.0, 2997.0, 3105.0])
+        end
+
+        it "Ordenados pacientes y menús usando sort" do
+            expect(@pacientes_lista.map{|x| x.gasto_energetico_total}.sort).to eq([1487.18, 1569.15, 1612.23, 1618.65, 1639.68, 1784.555, 2163.23, 2272.83, 3081.15, 3290.25])
+            expect(@menu_array.map{|x| x.reduce(:+)}.sort).to eq([1530.0, 1665.0, 1935.0, 2160.0, 2169.0, 2187.0, 2187.0, 2232.0, 2997.0, 3105.0])
+        end
+
+        it "Pruebas bechmark" do
+            
+            n=10000
+
+            Benchmark.bm do |x|
+                x.report("Lista usando for:") {n.times do @pacientes_lista.ordenar_for; end}
+                x.report("Lista usando each:"){n.times do @pacientes_lista.ordenar_each; end}
+                x.report("Lista usando sort:"){n.times do @pacientes_lista.map{|x| x.gasto_energetico_total}.sort ; end}
+        
+                x.report("Array usando for:") {n.times do @menu_array.ordenar_for; end}
+                x.report("Array usando each:"){n.times do @menu_array.ordenar_each; end}
+                x.report("Array usando sort:"){n.times do @menu_array.map{|x| x.reduce(:+)}.sort; end}
+            end
+        end
+        
     end
 end

@@ -26,7 +26,7 @@ class Lista
     end
 
     ## Método each, necesario para enumerar los elementos de una lista (métodos de Enumerable)
-    def each
+    def each(&block)
         nodo = Nodo.new(nil, nil, nil)
         nodo = @head
         
@@ -105,6 +105,53 @@ class Lista
         tmp
 
     end
+
+    ## Método ordenar con bucle for
+
+    def ordenar_for
+        
+        tmp = map{|x| x.gasto_energetico_total}
+        ordenado = []
+        ordenado.push(tmp[0])
+
+        for i in (1..length - 1)
+            for j in (0..i)
+  	            if(ordenado[j] >= tmp[i])
+  		            ordenado.insert(j,tmp[i])
+  	                break
+  	            elsif(ordenado[ordenado.length - 1] <= tmp[i])
+  	  	            ordenado.push(tmp[i])
+  		            break
+  	            end
+  	        end
+        end
+       ordenado
+    end
+
+    ## Método ordenar con each
+
+    def ordenar_each
+        tmp = map{ |x| x.gasto_energetico_total}
+        i = 0
+        tmp.each do |x|
+            a = x
+            aux = i
+            j = aux + 1
+        
+            tmp[j..tmp.length - 1].each do |y|
+                if (a > y)
+                    a = y
+                    aux = j
+                end
+                j+=1
+            end
+            tmp[aux] = x
+            tmp[i] = a
+            i+=1
+        end
+        tmp
+    end
+
 
 end
 

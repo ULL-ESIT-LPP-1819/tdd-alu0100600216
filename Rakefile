@@ -24,3 +24,8 @@ desc "Realizar pruebas del menú dietético"
 task :menu do
     sh "rspec spec/menudiet_spec.rb"
 end
+
+desc "Realizar pruebas de bechmark"
+task :benchmark do
+    sh "rspec spec/benchmark_spec.rb"
+end
