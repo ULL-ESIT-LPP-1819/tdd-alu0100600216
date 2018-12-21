@@ -21,6 +21,6 @@ task :etiqueta do
 end
 
 desc "Realizar pruebas del menú dietético"
-task :etiqueta do
+task :menu do
     sh "rspec spec/menudiet_spec.rb"
 end
