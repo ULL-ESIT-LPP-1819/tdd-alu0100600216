@@ -1,7 +1,16 @@
 require "./lib/Menudiet_alu0100600216.rb"
 
+##
+# Author::    Andrés Concepción Afonso
+# Mail::      alu0100600216@ull.edu.es
+#
+# == Clase Menu
+# Esta clase implementa un menú dietético como DSL
+#
+
 class Menu
 
+    ## Método initialize
     def initialize(nombre, &block)
         @nombre = nombre
         @desayuno = []
@@ -17,10 +26,12 @@ class Menu
         end
     end
 
+    # Definición del título
     def titulo(title)
   	    @titulo = title
     end
 
+    # Definición de la ingesta
     def ingesta(options = {})
 
   	    @min = (options[:min]) if options[:min]
@@ -28,6 +39,7 @@ class Menu
 
     end
 
+    # Definición del desayuno
     def desayuno(nombre_alimento, options = {})
 
         nombre_alimento = nombre_alimento
@@ -53,7 +65,7 @@ class Menu
           
     end
 
-
+    # Definición del almuerzo
     def almuerzo(nombre_alimento, options = {})
 
         nombre_alimento = nombre_alimento
@@ -79,6 +91,7 @@ class Menu
 
     end
 
+    # Definición de la cena
     def cena(nombre_alimento, options = {})
 
         nombre_alimento = nombre_alimento
@@ -104,6 +117,7 @@ class Menu
 
     end
 
+    # calculamos el valor energético total
     def valor_energetico_total
 
         @valor_energetico = @desayuno.map{|x| x.calc_valor_energ_kcal}.reduce(:+)
@@ -112,7 +126,7 @@ class Menu
 
     end
 
-        
+    # método to_s    
     def to_s
 		
         output = "\n"
