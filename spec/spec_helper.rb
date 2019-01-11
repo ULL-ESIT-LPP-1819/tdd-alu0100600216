@@ -1,5 +1,5 @@
 require "bundler/setup"
-require "menudiet_alu0100600216"
+require "Menudiet_alu0100600216"
 require 'coveralls'
 Coveralls.wear!
 

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    menudiet_alu0100600216 (0.1.0)
+    Menudiet_alu0100600216 (0.1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -98,12 +98,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  Menudiet_alu0100600216!
   bundler (~> 1.17)
   coveralls
   guard
   guard-bundler
   guard-rspec
-  menudiet_alu0100600216!
   rake (~> 10.0)
   rspec (~> 3.0)
 
