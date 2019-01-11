@@ -1,4 +1,4 @@
-require './lib/EtiquetaNutricional/Persona.rb'
+require './lib/Menudiet_alu0100600216/Persona.rb'
 
 RSpec.describe Persona do
 

@@ -1,16 +1,16 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "EtiquetaNutricional/version"
+require "menudiet_alu0100600216/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "EtiquetaNutricional"
-  spec.version       = EtiquetaNutricional::VERSION
+  spec.name          = "menudiet_alu0100600216"
+  spec.version       = Menudiet_alu0100600216::VERSION
   spec.authors       = ["Andrés Concepción Afonso"]
   spec.email         = ["alu0100600216@ull.edu.es"]
 
-  spec.summary       = "Etiqueta nutricional"
-  spec.description   = "Define una etiqueta nutricional y los métodos para calcular sus valores nutricionales"
+  spec.summary       = "Menú dietético"
+  spec.description   = "Define un menú dietético y los métodos para calcular sus valores nutricionales"
   spec.homepage      = "https://github.com/ULL-ESIT-LPP-1819/tdd-alu0100600216"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'

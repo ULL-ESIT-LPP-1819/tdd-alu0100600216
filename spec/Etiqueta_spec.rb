@@ -1,4 +1,4 @@
-RSpec.describe EtiquetaNutricional do
+RSpec.describe Menudiet_alu0100600216 do
 
 # Declaraciones de nutrientes y de nombre de producto
     before :each do
