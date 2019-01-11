@@ -1,7 +1,7 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "menudiet_alu0100600216/version"
+require "./lib/menudiet_alu0100600216/version.rb"
 
 Gem::Specification.new do |spec|
   spec.name          = "menudiet_alu0100600216"
