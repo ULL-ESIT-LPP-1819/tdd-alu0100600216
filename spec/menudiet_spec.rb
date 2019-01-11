@@ -1,5 +1,5 @@
-require './lib/EtiquetaNutricional.rb'
-require './lib/EtiquetaNutricional/MenuDiet.rb'
+require './lib/Menudiet_alu0100600216.rb'
+require './lib/Menudiet_alu0100600216/MenuDiet.rb'
 
 RSpec.describe Etiqueta do
 

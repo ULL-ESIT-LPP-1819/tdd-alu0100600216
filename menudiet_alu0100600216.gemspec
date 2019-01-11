@@ -1,11 +1,11 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "EtiquetaNutricional/version"
+require "menudiet_alu0100600216/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "EtiquetaNutricional"
-  spec.version       = EtiquetaNutricional::VERSION
+  spec.name          = "menudiet_alu0100600216"
+  spec.version       = Menudiet_alu0100600216::VERSION
   spec.authors       = ["Andrés Concepción Afonso"]
   spec.email         = ["alu0100600216@ull.edu.es"]
 

@@ -1,7 +1,7 @@
 
-require './lib/EtiquetaNutricional/Lista.rb'
-require './lib/EtiquetaNutricional/Persona.rb'
-require './lib/EtiquetaNutricional.rb'
+require './lib/Menudiet_alu0100600216/Lista.rb'
+require './lib/Menudiet_alu0100600216/Persona.rb'
+require './lib/Menudiet_alu0100600216.rb'
 
 RSpec.describe Paciente do
 

@@ -1,4 +1,4 @@
-require "./lib/EtiquetaNutricional.rb"
+require "./lib/Menudiet_alu0100600216.rb"
 
 class Menu
 

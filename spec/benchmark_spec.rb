@@ -1,12 +1,12 @@
-require './lib/EtiquetaNutricional'
-require './lib/EtiquetaNutricional/Lista.rb'
-require './lib/EtiquetaNutricional/Persona.rb'
-require './lib/EtiquetaNutricional/Array.rb'
+require './lib/Menudiet_alu0100600216'
+require './lib/Menudiet_alu0100600216/Lista.rb'
+require './lib/Menudiet_alu0100600216/Persona.rb'
+require './lib/Menudiet_alu0100600216/Array.rb'
 
 require 'benchmark'
 
 
-RSpec.describe EtiquetaNutricional do
+RSpec.describe Menudiet_alu0100600216 do
 
     context "# Benchmarks" do
 
