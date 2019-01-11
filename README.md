@@ -1,8 +1,7 @@
 # Menudiet_alu0100600216
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/Menudiet_alu0100600216`. To experiment with that code, run `bin/console` for an interactive prompt.
+Esta gema forma parte de la evaluación de la asignatura Lenguajes y Paradigmas de Programación y describe un menú dietético.
 
-TODO: Delete this and the text above, and describe your gem
 
 ## Installation
 
