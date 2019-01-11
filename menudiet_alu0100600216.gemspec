@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Andrés Concepción Afonso"]
   spec.email         = ["alu0100600216@ull.edu.es"]
 
-  spec.summary       = "Etiqueta nutricional"
-  spec.description   = "Define una etiqueta nutricional y los métodos para calcular sus valores nutricionales"
+  spec.summary       = "Menú dietético"
+  spec.description   = "Define un menú dietético y los métodos para calcular sus valores nutricionales"
   spec.homepage      = "https://github.com/ULL-ESIT-LPP-1819/tdd-alu0100600216"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
